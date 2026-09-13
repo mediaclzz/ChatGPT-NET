@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT NET",
+  "version": "1.5.0",
+  "description": "Local manual hierarchy network canvas for ChatGPT conversations.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "src/shared/constants.js",
+      "src/shared/utils.js",
+      "src/shared/schema.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": [
+        "src/shared/constants.js",
+        "src/shared/utils.js",
+        "src/shared/schema.js",
+        "src/shared/graph.js",
+        "src/shared/geometry.js",
+        "src/content/hierarchy.js",
+        "src/content/chatgpt.js",
+        "src/content/store.js",
+        "src/content/router.js",
+        "src/content/ui.js",
+        "src/content/main.js"
+      ],
+      "css": [
+        "src/content/styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "chatgpt-net@local",
+      "strict_min_version": "152.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "incognito": "spanning",
+  "action": {
+    "default_title": "ChatGPT NET",
+    "default_icon": {
+      "32": "icons/net-on.svg"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "chatgpt-net",
+  "version": "1.5.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-extension.ps1",
+    "check": "node tests/syntax_check.js && node tests/static_audit.js && node tests/background.test.js && node tests/hierarchy.test.js && node tests/core.test.js && node tests/router_stress.test.js",
+    "test:firefox": "node tests/firefox_extension_integration.mjs",
+    "test": "npm run check"
+  },
+  "devDependencies": {
+    "web-ext": "8.10.0"
+  }
+}
