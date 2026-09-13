@@ -6,7 +6,7 @@ const root=resolve(import.meta.dirname,'..');
 const firefox=process.env.CHATGPT_NET_FIREFOX;
 if(!firefox)throw new Error('Set CHATGPT_NET_FIREFOX to your Firefox executable before running this integration test.');
 const driver=process.env.CHATGPT_NET_GECKODRIVER||resolve(root,'output','geckodriver','geckodriver.exe');
-const xpi=process.env.CHATGPT_NET_XPI||resolve(root,'dist','ChatGPT-NET-1.5.0.xpi');
+const xpi=process.env.CHATGPT_NET_XPI||resolve(root,'dist','ChatGPT-NET-'+JSON.parse(readFileSync(resolve(root,'manifest.json'),'utf8')).version+'.xpi');
 const output=resolve(root,'output','firefox');
 const port=Number(process.env.CHATGPT_NET_WEBDRIVER_PORT||4545),base=`http://127.0.0.1:${port}`;
 mkdirSync(output,{recursive:true});
