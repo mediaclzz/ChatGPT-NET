@@ -56,7 +56,7 @@ assert.deepStrictEqual([...recheck150.matchAll(/^\| (\d+) \|/gm)].map(m=>Number(
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
 assert.strictEqual(manifest.manifest_version,3);
 assert.strictEqual(manifest.name,'ChatGPT NET');
-assert.strictEqual(manifest.version,'1.5.0');
+assert.strictEqual(manifest.version,'1.5.1');
 assert.deepStrictEqual(manifest.permissions,['storage'],'only storage permission is required');
 assert.deepStrictEqual(new Set(manifest.host_permissions),new Set(['https://chatgpt.com/*','https://chat.openai.com/*']));
 assert.ok(parseFloat(manifest.browser_specific_settings.gecko.strict_min_version)>=152);

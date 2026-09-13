@@ -1,4 +1,8 @@
-# ChatGPT NET 1.5.0
+# ChatGPT NET 1.5.1
+
+1.5.1 更新构建工具及依赖安全修复，扩展功能沿用 1.5 基线。 / Version 1.5.1 ships the build dependency security update with the same 1.5 functionality.
+
+[1.5.1 发布说明 / Release notes](docs/RELEASE_NOTES_1.5.1.md)
 
 ## 项目介绍 / Overview
 
