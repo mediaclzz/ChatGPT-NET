@@ -69,7 +69,9 @@ assert.strictEqual(pkg.type,'commonjs','project tests must be isolated from pare
 assert.strictEqual(pkg.version,manifest.version);
 assert.match(pkg.scripts.build,/scripts\/build-extension\.ps1/);
 assert.match(pkg.scripts['test:firefox'],/firefox_extension_integration\.mjs/);
-assert.strictEqual(pkg.devDependencies['web-ext'],'8.10.0','Firefox package builder must be reproducibly pinned');
+assert.match(pkg.devDependencies['web-ext'],/^\d+\.\d+\.\d+$/,'Firefox package builder must use an exact version');
+const packageLock=JSON.parse(fs.readFileSync(path.join(root,'package-lock.json'),'utf8'));
+assert.strictEqual(packageLock.packages['node_modules/web-ext'].version,pkg.devDependencies['web-ext'],'lockfile must match the pinned Firefox builder');
 const buildScript=fs.readFileSync(path.join(root,'scripts','build-extension.ps1'),'utf8');
 assert.match(buildScript,/\bnpx --no-install web-ext build\b/,'package must use the pinned Firefox web-ext builder');
 assert.ok(!buildScript.includes('Compress-Archive'),'PowerShell ZIPs register but fail to resolve content scripts in Firefox 152');

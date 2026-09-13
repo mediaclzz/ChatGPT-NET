@@ -54,7 +54,9 @@ node tests/firefox_extension_integration.mjs
 
 ## Build the Firefox package
 
-Run `npm ci` once, then `npm run build`. The project pins Firefox's official `web-ext` builder to 8.10.0. It creates `dist/ChatGPT-NET-<version>.zip`; the build also writes the identical bytes as `dist/ChatGPT-NET-<version>.xpi` for Firefox-native naming. Both contain only `manifest.json`, `background.js`, `icons/` and `src/`. Baseline documents, release notes, tests, screenshots and historical packages remain outside the installable extension because they have no runtime role.
+See [build dependency security notes](docs/BUILD_DEPENDENCY_SECURITY.md) for resolved and outstanding tooling advisories.
+
+Use Node.js 24 LTS. Run `npm ci` once, then `npm run build`. The project pins Firefox's official `web-ext` builder to 10.6.0. It creates `dist/ChatGPT-NET-<version>.zip`; the build also writes the identical bytes as `dist/ChatGPT-NET-<version>.xpi` for Firefox-native naming. Both contain only `manifest.json`, `background.js`, `icons/` and `src/`. Baseline documents, release notes, tests, screenshots and historical packages remain outside the installable extension because they have no runtime role.
 
 `browser_integration.py` uses a real browser with a deliberately difficult mock ChatGPT layout. `firefox_extension_integration.mjs` uses Mozilla geckodriver, a disposable Firefox profile and the built XPI on the real `chatgpt.com` domain. Together they cover excerpts, hierarchy, manual movement, rigid subtrees, multi-parent rules, memo transfer, project-shaped URL moves, scroll isolation, DOM reuse and resource behavior.
 
