@@ -10,6 +10,6 @@
     "test": "npm run check"
   },
   "devDependencies": {
-    "web-ext": "10.6.0"
+    "web-ext": "10.8.0"
   }
 }
